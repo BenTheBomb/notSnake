@@ -1,39 +1,48 @@
+// This is not snake!
+// I started out with that but it turned into something...more.
+// You are blue. Collect green, avoid red.
+// Score 99 to win!
+
 import processing.core.PApplet;
 
 public class Main extends PApplet {
     Snake s;
     HUD hud;
     Apple a;
+    Enemy e;
     boolean[] keys = new boolean[4];
+
     public void settings() {
         size(400, 400);
     }
 
     public void setup() {
-        s = new Snake();
+        s = new Snake(this);
         hud = new HUD();
-        a = new Apple();
+        a = new Apple(this);
+        e = new Enemy(this);
     }
 
     public void draw() {
         background(255);
-        hud.display();
-        s.display();
-        a.display();
-        
-        s.move(keys);
+        hud.display(this);
+        a.display(this);
+        s.display(this);
+        e.display(this);
+
+        s.move(this);
 
         if (s.ate(a)) { // collision with apple
             hud.score += 1;
-            s.grow();
-            a = new Apple();
+            s.grow(this);
+            a = new Apple(this);
         }
 
-        if (s.isDead()) { // collision with wall or itself
-            hud.score = 0;
+        if (s.isDead(e)) { // collision with wall or itself
+            hud.gameOver(this);
         }
-
     }
+
     public static void main(String[] args) {
         String[] processingArgs = { "MySketch" };
         Main mySketch = new Main();
