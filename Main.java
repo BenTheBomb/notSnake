@@ -38,7 +38,7 @@ public class Main extends PApplet {
             a = new Apple(this);
         }
 
-        if (s.isDead(e)) { // collision with wall or itself
+        if (s.isDead(e)) { // collision with enemy
             hud.gameOver(this);
         }
     }
