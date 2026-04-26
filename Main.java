@@ -13,7 +13,7 @@ public class Main extends PApplet {
     boolean[] keys = new boolean[4];
 
     public void settings() {
-        size(400, 400);
+        size(420, 420);
     }
 
     public void setup() {

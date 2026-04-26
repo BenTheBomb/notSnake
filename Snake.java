@@ -11,7 +11,7 @@ public class Snake extends Block {
     }
 
     public void display(PApplet p) {
-        p.fill(0,0, 200);
+        p.fill(0, 0, 200);
         for (int i = 0; i <= len; i++) {
             p.rect(tail[i].x, tail[i].y, size, size);
         }
@@ -49,11 +49,10 @@ public class Snake extends Block {
         tail[len].y = 20 * p.random(20);
     }
 
-
     // could abstract next two methods since basically same
     public boolean isDead(Enemy e) {
         for (int i = 0; i <= len; i++) {
-            if ((e.x > tail[i].x - size && e.x < tail[i].x + size) && e.y > tail[i].y - size && e.y < tail[i].y + size) {
+            if ((e.x > tail[i].x - 16 && e.x < tail[i].x + 16) && e.y > tail[i].y - 16 && e.y < tail[i].y + 16) {
                 return true;
             }
         }
@@ -62,7 +61,8 @@ public class Snake extends Block {
 
     public boolean ate(Apple a) {
         for (int i = 0; i <= len; i++) {
-            if ((a.x > tail[i].x - size && a.x < tail[i].x + size) && a.y > tail[i].y - size && a.y < tail[i].y + size) {
+            if ((a.x > tail[i].x - size && a.x < tail[i].x + size) && a.y > tail[i].y - size
+                    && a.y < tail[i].y + size) {
                 return true;
             }
         }

@@ -7,7 +7,7 @@ public class Block {
     float size = 18;
     int current_dir;
 
-    public Block(){
+    public Block() {
     }
 
 }
